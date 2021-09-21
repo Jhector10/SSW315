@@ -27,7 +27,23 @@ class OpenCommercial {
     System.out.flush();        /* Make sure the line is printed immediately. */
     inputLine = keyboard.readLine();
 
-    /* Replace this comment with your solution.  */
-
+    URL url = new URL("https://www." + inputLine + ".com"); 
+    // Constructor used to create a URL
+    InputStream open = url.openStream(); 
+    // Opens a connection to this URL and returns an InputStream for reading from that connection
+    InputStreamReader read = new InputStreamReader(open);
+    // Decodes the url to characters
+    BufferedReader buff = new BufferedReader(read);
+    
+    String[] arr = new String[5]; // create an Array of 5 elements to hold the lines
+    
+    for(int j = 0; j < 5; j++) { // add the website lines into the array
+    	arr[j] = buff.readLine();
+    }
+    
+    for(int i = 4; i >= 0; i--) { // print out the array (with the lines) in reverse order
+    	System.out.println(arr[i]);
+    }
+    
   }
 }
